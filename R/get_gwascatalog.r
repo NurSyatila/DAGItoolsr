@@ -12,6 +12,7 @@
 #' @export
 #' @importFrom stats na.omit
 #' @importFrom utils write.csv
+#' @importFrom magrittr %>%
 get_gwascatalog <- function(queryTerms) {
     gene_file <- "GWASCatalog_Genes.txt"
     pcgene_file <- "GWASCatalog_PCGenes.txt"
