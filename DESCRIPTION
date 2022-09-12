@@ -30,5 +30,8 @@ Imports:
   rvest (>= 1.0.3),
   tidyr (>= 1.2.0),
   Biobase (>= 2.56.0)
-Remotes: github::ramiromagno/gwasrapidd (>=0.99.13), github::cran/SPARQL (>1.16), bitbucket::ibi_group/disgenet2r (>=0.99.2)
+Remotes:
+  github::ramiromagno/gwasrapidd,
+  github::cran/SPARQL,
+  bitbucket::ibi_group/disgenet2r
 License: GPL (>=3)
