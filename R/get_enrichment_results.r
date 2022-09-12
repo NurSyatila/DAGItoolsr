@@ -75,7 +75,8 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
         }
         dev.off()
         if (ORAterm=="KEGG"){
-            utils::data("bods")
+            utils::data("bods", package = "pathview")
+            utils::data("gene.idtype.bods", package = "pathview")
             print ("pathview")
             enriched_pathways <- sumORA[1:5,1]
             dir.create("Pathview")
