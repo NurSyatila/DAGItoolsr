@@ -26,32 +26,19 @@ get_gwascatalog <- function(queryTerms) {
             tidyr::drop_na(pvalue) %>%
             dplyr::pull(association_id) -> association_ids # Extract column association_id
             my_associations2 <- my_associations[association_ids]
-            if (length(my_associations2@associations$association_id)>0){
-                gwas_geneids <- my_associations2@entrez_ids$entrez_id # Get Entrez IDs
-                gwas_list <- c(gwas_list, gwas_geneids)
-                for (i in 1:length(my_associations2@associations$association_id)){
-                    var1 <- my_associations2[i,]@associations$association_id
-                    var2 <- my_associations2[i,]@associations$pvalue
-                    var3 <- my_associations2[i,]@risk_alleles$variant_id
-                    var4 <- my_associations2[i,]@entrez_ids$gene_name
-                    var5 <- my_associations2[i,]@entrez_ids$entrez_id
-                    getvar6 <- function(){
-                        tryCatch({ var6 <- gwasrapidd::get_traits(association_id = my_associations2[i,]@entrez_ids$association_id)@traits$efo_id }, error=function(e) { var6 <- "NA" })
-                    }
-                    getvar7 <- function(){
-                        tryCatch({ var7 <- gwasrapidd::get_traits(association_id = my_associations2[i,]@entrez_ids$association_id)@traits$trait }, error=function(e) { var6 <- "NA" })
-                    }
-                    var6 <- getvar6()
-                    var7 <- getvar7()
-                    df <- data.frame(paste(var1,collapse=', '),paste(var2,collapse=', '),paste(var3,collapse=', '),paste(var4,collapse=', '),paste(var5,collapse=', '),paste(var6,collapse=', '),paste(var7,collapse=', '))
-                    summarylist[[paste(var1,collapse=', ')]] <- df
-                }
+            new_associations <- subset(as.data.frame(my_associations2@entrez_ids), !is.na(entrez_id))
+            new_associations$pvalue <- my_associations[new_associations$association_id]@associations$pvalue
+            new_associations$variant_id <- paste(unique(my_associations[new_associations$association_id]@risk_alleles$variant_id),collapse=",")
+            new_associations$queryterm <- qt
+            if (nrow(new_associations>0)){
+                gwas_list <- c(gwas_list, new_associations$entrez_id)
+                summarylist[[qt]] <- new_associations
             }
         }
     }
     if (length(summarylist) > 0){
         summarytable <- unique(do.call(rbind,summarylist))
-        colnames(summarytable) <- c("AssociationID","pValue","VariantID","GeneName","EntrezID","EFOID","Trait")
+        colnames(summarytable) <- c("association_id","locus_id","gene_name","entrez_id","pvalue","variant_id","queryterm")
         write.csv(summarytable, file="GWASCatalogSummary.csv",row.names = FALSE)
         gwas_list2 <- unique(na.omit(gwas_list))
         if (length(gwas_list2)>0){
