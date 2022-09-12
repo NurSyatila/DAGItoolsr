@@ -21,7 +21,7 @@ get_gene_modules <- function(geneNetwork){
   string_db <- STRINGdb::STRINGdb$new( version="11.5", species=9606, score_threshold=700, input_directory=".")
   g <- geneNetwork
   c <- igraph::walktrap.community(g,modularity=TRUE)
-  c_keep_ids <- as.numeric(names(igraph::gsize(c)[igraph::gsize(c) >= 4]))
+  c_keep_ids <- as.numeric(names(sizes(c)[sizes(c) >= 4]))
   c_keep_v_idxs <- which(c$membership %in% c_keep_ids)
 
   g_sub <- igraph::induced_subgraph(g, igraph::V(g)[c_keep_v_idxs])
