@@ -33,7 +33,7 @@ Imports:
   magrittr (>= 2.0.3),
   utils (>= 4.2.1)
 Remotes:
-  github::ramiromagno/gwasrapidd (>=0.99.13),
-  github::cran/SPARQL (>1.16),
-  bitbucket::ibi_group/disgenet2r (>=0.99.2)
+  github::ramiromagno/gwasrapidd,
+  github::cran/SPARQL,
+  bitbucket::ibi_group/disgenet2r
 License: GPL (>=3)
