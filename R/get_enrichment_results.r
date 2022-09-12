@@ -18,28 +18,28 @@
 get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
     if (ORAterm=="BP"){
         if (enrichmenttype=="GSE")
-          { ORAresults <- clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "BP", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000)}
-        else { ORAresults <- clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000)}
+          { ORAresults <- suppressMessages(clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "BP", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000))}
+        else { ORAresults <- suppressMessages(clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "BP", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000))}
     }
     if (ORAterm=="MF"){
       if (enrichmenttype=="GSE")
-        { ORAresults <- clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "MF", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000) }
-      else { ORAresults <- clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "MF",pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000) }
+        { ORAresults <- suppressMessages(clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "MF", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000)) }
+      else { ORAresults <- suppressMessages(clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "MF",pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000)) }
     }
     if (ORAterm=="CC"){
       if (enrichmenttype=="GSE")
-        { ORAresults <- clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "CC", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000) }
-      else { ORAresults <- clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "CC", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000) }
+        { ORAresults <- suppressMessages(clusterProfiler::gseGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", nPerm = 10000, ont = "CC", pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000)) }
+      else { ORAresults <- suppressMessages(clusterProfiler::enrichGO(gene = geneList, OrgDb = org.Hs.eg.db::org.Hs.eg.db, keyType = "ENTREZID", ont = "CC", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000)) }
     }
     if (ORAterm=="KEGG"){
       if (enrichmenttype=="GSE")
-        { ORAresults <- clusterProfiler::gseKEGG(gene = geneList, organism = "hsa", keyType = "ncbi-geneid", nPerm = 10000, pvalueCutoff = 0.05, pAdjustMethod = "none", use_internal_data = FALSE, minGSSize = 3,maxGSSize = 10000) }
-      else { ORAresults <- clusterProfiler::enrichKEGG(gene = geneList, organism = "hsa", keyType = "ncbi-geneid", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", use_internal_data = FALSE, minGSSize = 3,maxGSSize = 10000) }
+        { ORAresults <- suppressMessages(clusterProfiler::gseKEGG(gene = geneList, organism = "hsa", keyType = "ncbi-geneid", nPerm = 10000, pvalueCutoff = 0.05, pAdjustMethod = "none", use_internal_data = FALSE, minGSSize = 3,maxGSSize = 10000)) }
+      else { ORAresults <- suppressMessages(clusterProfiler::enrichKEGG(gene = geneList, organism = "hsa", keyType = "ncbi-geneid", pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", use_internal_data = FALSE, minGSSize = 3,maxGSSize = 10000)) }
     }
     if (ORAterm=="DO"){
       if (enrichmenttype=="GSE")
-        { ORAresults <- DOSE::gseDO(gene = geneList, nPerm = 10000, pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000) }
-      else { ORAresults <- DOSE::enrichDO(gene = geneList, pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000) }
+        { ORAresults <- suppressMessages(DOSE::gseDO(gene = geneList, nPerm = 10000, pvalueCutoff = 0.05, pAdjustMethod = "none", minGSSize = 3, maxGSSize = 10000)) }
+      else { ORAresults <- suppressMessages(DOSE::enrichDO(gene = geneList, pvalueCutoff = 0.01, qvalueCutoff = 0.05, pAdjustMethod = "BH", minGSSize = 3, maxGSSize = 10000)) }
     }
     sumORA <- as.data.frame(ORAresults)
     if (nrow(sumORA)>0){
@@ -47,7 +47,7 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
         pdf(file=paste(ORAterm,"_Plots.pdf",sep=''))
         if (enrichmenttype=="GSE"){
           plot1 <- suppressWarnings(enrichplot::dotplot(ORAresults, showCategory=10, split=".sign") + ggplot2::facet_grid(.~.sign))
-          ORAresultsx <- DOSE::setReadable(ORAresults, org.Hs.eg.db::org.Hs.eg.db, 'ENTREZID')
+          ORAresultsx <- suppressWarnings(DOSE::setReadable(ORAresults, org.Hs.eg.db::org.Hs.eg.db, 'ENTREZID'))
           plot2 <- suppressWarnings(enrichplot::cnetplot(ORAresultsx, categorySize="pvalue", foldChange=geneList,node_label="all"))
           plot3 <- suppressWarnings(enrichplot::heatplot(ORAresultsx,showCategory=5, foldChange=geneList))
           ORAresultsx2 <- suppressWarnings(enrichplot::pairwise_termsim(ORAresultsx))
@@ -76,13 +76,13 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
         dev.off()
         if (ORAterm=="KEGG"){
             suppressWarnings(utils::data("bods", package = "pathview"))
-            suppressWarnings((utils::data("gene.idtype.bods", package = "pathview"))
+            suppressWarnings(utils::data("gene.idtype.bods", package = "pathview"))
             print ("pathview")
             enriched_pathways <- sumORA[1:5,1]
             dir.create("Pathview")
             setwd("Pathview")
             for (pth_id in enriched_pathways){
-                suppressMessages(pathview::pathview(gene.data=geneList, pathway.id=pth_id, species = "hsa")))
+                suppressMessages(pathview::pathview(gene.data=geneList, pathway.id=pth_id, species = "hsa"))
             }
             setwd("../")
 
