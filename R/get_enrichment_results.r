@@ -50,7 +50,7 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
           ORAresultsx <- DOSE::setReadable(ORAresults, org.Hs.eg.db::org.Hs.eg.db, 'ENTREZID')
           plot2 <- suppressWarnings(enrichplot::cnetplot(ORAresultsx, categorySize="pvalue", foldChange=geneList,node_label="all"))
           plot3 <- suppressWarnings(enrichplot::heatplot(ORAresultsx,showCategory=5, foldChange=geneList))
-          ORAresultsx2 <- enrichplot::pairwise_termsim(ORAresultsx)
+          ORAresultsx2 <- suppressWarnings(enrichplot::pairwise_termsim(ORAresultsx))
           suppressWarnings(options(ggrepel.max.overlaps = Inf))
           plot4 <- suppressWarnings(enrichplot::emapplot(ORAresultsx2))
           print(plot1)
@@ -61,10 +61,10 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
         else {
           plot1 <- suppressWarnings(barplot(ORAresults, showCategory=10))
           plot2 <- suppressWarnings(enrichplot::dotplot(ORAresults, showCategory=10))
-          ORAresultsx <- DOSE::setReadable(ORAresults, org.Hs.eg.db::org.Hs.eg.db, 'ENTREZID')
+          ORAresultsx <- suppressWarnings(DOSE::setReadable(ORAresults, org.Hs.eg.db::org.Hs.eg.db, 'ENTREZID'))
           plot3 <- suppressWarnings(enrichplot::cnetplot(ORAresultsx, categorySize="pvalue",node_label="all"))
           plot4 <- suppressWarnings(enrichplot::heatplot(ORAresultsx,showCategory=5))
-          ORAresultsx2 <- enrichplot::pairwise_termsim(ORAresultsx)
+          ORAresultsx2 <- suppressWarnings(enrichplot::pairwise_termsim(ORAresultsx))
           suppressWarnings(options(ggrepel.max.overlaps = Inf))
           plot5 <- suppressWarnings(enrichplot::emapplot(ORAresultsx2))
           print(plot1)
@@ -75,14 +75,14 @@ get_enrichment_results <- function(geneList,ORAterm,enrichmenttype) {
         }
         dev.off()
         if (ORAterm=="KEGG"){
-            utils::data("bods", package = "pathview")
-            utils::data("gene.idtype.bods", package = "pathview")
+            suppressWarnings(utils::data("bods", package = "pathview"))
+            suppressWarnings((utils::data("gene.idtype.bods", package = "pathview"))
             print ("pathview")
             enriched_pathways <- sumORA[1:5,1]
             dir.create("Pathview")
             setwd("Pathview")
             for (pth_id in enriched_pathways){
-                pathview::pathview(gene.data=geneList, pathway.id=pth_id, species = "hsa")
+                suppressMessages(pathview::pathview(gene.data=geneList, pathway.id=pth_id, species = "hsa")))
             }
             setwd("../")
 
