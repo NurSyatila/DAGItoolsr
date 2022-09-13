@@ -8,11 +8,11 @@ get_gene_modules(geneNetwork)
 }
 \arguments{
 \item{geneNetwork}{An igraph object}
+
+\item{summaryFile}{A file name to store details of the clusters}
 }
 \value{
-PPI: A list of gene clusters with details on enriched KEGG Pathway (GeneCluster.txt)
-
-A directory named PPI/GeneClusters containing the list of genes in each gene module
+PPI: A list of gene clusters with details on enriched KEGG Pathway (summaryFile)
 }
 \description{
 Get gene modules (clusters of genes according to interactions) and analyse individual gene clusters/modules (required by analyse_ppi_network())
