@@ -77,7 +77,7 @@ analyse_deg <- function(queryTerms,GSEaccession,GSEplatform){
                 vplot <- full_results %>%
                   dplyr::mutate(Significant = adj.P.Val < 0.05, abs(logFC) > 2.0 ) %>%
                   dplyr::mutate(Rank = 1:dplyr::n(), Label = ifelse(Rank < 20, Gene.symbol,"")) %>%
-                  ggplot2::ggplot(aes(x = logFC, y = B, col=Significant,label=Label)) + ggplot2::geom_point() + ggrepel::geom_text_repel(col="black")
+                  ggplot2::ggplot(ggplot2::aes(x = logFC, y = B, col=Significant,label=Label)) + ggplot2::geom_point() + ggrepel::geom_text_repel(col="black")
                 print(vplot)
                 # Build histogram of P-values for all genes. Normal test
                 # assumption is that most genes are not differentially expressed.
