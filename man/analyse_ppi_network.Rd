@@ -12,17 +12,11 @@ analyse_ppi_network(geneList)
 \value{
 A directory named PPI
 
-PPI: A summary of PPI analysis (PPISummary.txt)
+PPI: A summary of PPI analysis, top genes and gene clusters (PPISummary.txt)
 
 PPI: A PDF file containing visualization plots from PPI analysis (STRING_PPI_Network.pdf)
 
 PPI: A list of filtered genes from PPI where isolated nodes are discarded (FilteredGenes.txt)
-
-PPI: Top genes from PPI with highest interaction (Top_PPI_genes.txt)
-
-PPI: A list of gene clusters with details on enriched KEGG Pathway (GeneCluster.txt)
-
-A directory named PPI/GeneClusters containing the list of genes in each gene module
 
 A directory named PPI/FilteredGenes containing functional enrichment results for filtered genes
 
