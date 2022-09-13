@@ -6,11 +6,9 @@
 #' @return PPI: A summary of PPI analysis (PPISummary.txt)
 #' @return PPI: A PDF file containing visualization plots from PPI analysis (STRING_PPI_Network.pdf)
 #' @return PPI: A list of filtered genes from PPI where isolated nodes are discarded (FilteredGenes.txt)
-#' @return PPI: Top genes from PPI with highest interaction (Top_PPI_genes.txt)
 #' @return PPI: A list of gene clusters with details on enriched KEGG Pathway (GeneCluster.txt)
-#' @return A directory named PPI/GeneClusters containing the list of genes in each gene module
 #' @return A directory named PPI/FilteredGenes containing functional enrichment results for filtered genes
-#' @return A directory named PPI/TopGenes containing functional enrichment results for top 10 or 20 genes
+#' @return A directory named PPI/TopGenes containing KEGG enrichment results for top 10 or 20 genes
 #' @examples
 #' gene_file <- 'DatabaseGenes.txt';
 #' geneList <- readLines(gene_file)
