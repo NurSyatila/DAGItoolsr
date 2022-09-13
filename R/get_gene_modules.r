@@ -2,8 +2,8 @@
 #'
 #' Get gene modules (clusters of genes according to interactions) and analyse individual gene clusters/modules (required by analyse_ppi_network())
 #' @param geneNetwork An igraph object
-#' @return PPI: A list of gene clusters with details on enriched KEGG Pathway (GeneCluster.txt)
-#' @return A directory named PPI/GeneClusters containing the list of genes in each gene module
+#' @param summaryFile A file name to store details of the clusters
+#' @return PPI: A list of gene clusters with details on enriched KEGG Pathway (SummaryFile)
 #' @examples
 #' geneList <- readLines(gene_file)
 #' genelist <- as.data.frame(geneList)
@@ -15,8 +15,7 @@
 #' results <- get_gene_modules(gene_network2)
 #' @export
 #' @importFrom graphics par
-get_gene_modules <- function(geneNetwork){
-  summaryFile <- "GeneCluster.txt"
+get_gene_modules <- function(geneNetwork,summaryFile){
   print ("Get modules from clustering..")
   string_db <- STRINGdb::STRINGdb$new( version="11.5", species=9606, score_threshold=700, input_directory=".")
   g <- geneNetwork
