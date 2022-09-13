@@ -110,7 +110,6 @@ analyse_ppi_network <- function(geneList){
     # perform functional enrichment analysis for top 20 genes
     dir.create("TopGenes")
     setwd("TopGenes")
-    write(paste(top_genes_degrees3$gene_symbol,collapse="\n"),file="../Top_PPI_genes.txt")
     suppressMessages(get_enrichment_results(top_genes_degrees3$gene_id,"KEGG","ORA"))
     setwd("../")
   } else {
