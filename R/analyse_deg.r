@@ -37,9 +37,9 @@ analyse_deg <- function(queryTerms,GSEaccession,GSEplatform){
         ex <- exprs(gset2)
         qx <- as.numeric(quantile(ex, c(0., 0.25, 0.5, 0.75, 0.99, 1.0), na.rm=T))
         LogC <- (qx[5] > 100) || (qx[6]-qx[1] > 50 && qx[2] > 0)
-        if (LogC) {
+        if (LogC ) { 
             ex[which(ex <= 0)] <- NaN
-            exprs(gset2) <- log2(ex) 
+            ex <- log2(ex) 
         }
         # assign samples to groups and set up design matrix
         gs <- factor(sampleGrouping)
