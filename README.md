@@ -12,7 +12,7 @@ To use DAGItoolsr package:
 > library(DAGItoolsr)
 
 To run a gene search workflow for a disease, e.g. endometriosis:
-> queryTerms <- c("endometriosis", "endometrioma") # include disease name and keywords for search
+> queryTerms <- c("endometriosis", "endometrioma") # include disease name and keywords for search<br>
 > results <- genesearch_workflow(queryTerms)
 
 A directory named 'GeneSearch' will be created which contains results from database gene search, PPI and/or functional enrichment analyses for a list of genes matching the query disease name / keywords.
