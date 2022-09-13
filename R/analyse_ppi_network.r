@@ -115,6 +115,6 @@ analyse_ppi_network <- function(geneList){
   }
   print ("Get gene modules/clusters..")
   # get gene modules
-  suppressMessages(get_gene_modules(gene_network_new2))
+  suppressMessages(get_gene_modules(gene_network_new2,summaryFile))
   dev.off()
 }
