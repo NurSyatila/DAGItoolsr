@@ -111,10 +111,7 @@ analyse_ppi_network <- function(geneList){
     dir.create("TopGenes")
     setwd("TopGenes")
     write(paste(top_genes_degrees3$gene_symbol,collapse="\n"),file="../Top_PPI_genes.txt")
-    write(paste("** Top genes: Functional enrichment using clusterProfiler **\n",collapse=" "),file="../PPISummary.txt",append=TRUE)
-    for (ORAname in ORAnames){
-      suppressMessages(get_enrichment_results(top_genes_degrees3$gene_id,ORAname,"ORA"))
-    }
+    suppressMessages(get_enrichment_results(top_genes_degrees3$gene_id,"KEGG","ORA"))
     setwd("../")
   } else {
     write(paste("** Top genes cannot be generated **\n",collapse=" "),file=summaryFile,append=TRUE)
