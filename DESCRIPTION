@@ -35,5 +35,6 @@ Imports:
 Remotes:
   github::ramiromagno/gwasrapidd,
   github::cran/SPARQL,
-  bitbucket::ibi_group/disgenet2r
+  gitlab::medbio/disgenet2r
 License: GPL (>=3)
+
