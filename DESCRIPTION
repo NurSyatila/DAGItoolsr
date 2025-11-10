@@ -35,8 +35,9 @@ Imports:
 Remotes:
   github::ramiromagno/gwasrapidd,
   github::cran/SPARQL,
-  gitlab::medbio/disgenet2r
+  gitlab::medbio/disgenet2r,
   bioc::pathview
 License: GPL (>=3)
+
 
 
