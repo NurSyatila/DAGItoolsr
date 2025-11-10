@@ -31,13 +31,16 @@ Imports:
   tidyr (>= 1.2.0),
   Biobase (>= 2.56.0),
   magrittr (>= 2.0.3),
-  utils (>= 4.2.1)
+  utils (>= 4.2.1),
+  Rgraphviz (>= 2.40.0),
+  KEGGgraph (>= 1.30.0)
 Remotes:
   github::ramiromagno/gwasrapidd,
   github::cran/SPARQL,
   gitlab::medbio/disgenet2r,
-  bioc::pathview
+  github::datapplab/pathview
 License: GPL (>=3)
+
 
 
 
